@@ -1,0 +1,5 @@
+- inside "MeteorTestMeteor":
+  - `meteor run`
+- inside "MyMeteorTestApp":
+  - Terminal 1: `npm start`
+  - Terminal 2: `npm run android`
