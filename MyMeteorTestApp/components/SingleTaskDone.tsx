@@ -1,5 +1,5 @@
 import React from 'react';
-import Meteor, {useTracker} from '@meteorrn/core';
+import {useTracker} from '@meteorrn/core';
 import {Pressable, StyleSheet} from 'react-native';
 import {TasksCollection, Task} from '../types';
 
@@ -15,9 +15,7 @@ function SingleTaskDone({id}: {id: string}) {
   console.log('render <SingleTaskDone>', {id, isDone});
 
   const onPress = () => {
-    TasksCollection.update(id, {isDone: !isDone}, () => {
-      Meteor.call('tasks.updateIsDone', {taskId: id, isDone: !isDone});
-    });
+    TasksCollection.update(id, {$set: {isDone: !isDone}});
   };
 
   const styleIsDone = {backgroundColor: isDone ? 'yellow' : 'transparent'};
