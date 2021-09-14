@@ -15,31 +15,29 @@ function SingleTaskDone({id}: {id: string}) {
   console.log('render <SingleTaskDone>', {id, isDone});
 
   const onPress = () => {
-    Meteor.call(
-      'tasks.updateIsDone',
-      {taskId: id, isDone: !isDone},
-      (error: any) => {
-        if (error) {
-          console.log('Update Error:', error);
-        }
-      },
-    );
+    TasksCollection.update(id, {isDone: !isDone}, () => {
+      Meteor.call('tasks.updateIsDone', {taskId: id, isDone: !isDone});
+    });
   };
 
   const styleIsDone = {backgroundColor: isDone ? 'yellow' : 'transparent'};
   return (
-    <Pressable style={[styles.SingleTaskDone, styleIsDone]} onPress={onPress} />
+    <Pressable
+      style={[styles.SingleTaskDone, styleIsDone]}
+      onPress={onPress}
+      android_ripple={{color: 'white'}}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   SingleTaskDone: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     margin: 3,
     borderWidth: 3,
     borderColor: 'red',
-    borderRadius: 15,
+    borderRadius: 50,
   },
 });
 

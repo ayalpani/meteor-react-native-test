@@ -25,7 +25,7 @@ function SingleTask({id}: {id: string}) {
 
 const styles = StyleSheet.create({
   SingleTask: {
-    height: 50,
+    height: 60,
     padding: 5,
     backgroundColor: 'lightgrey',
     borderRadius: 100,
