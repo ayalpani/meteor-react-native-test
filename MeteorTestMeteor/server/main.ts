@@ -1,6 +1,5 @@
 import { Meteor } from "meteor/meteor";
 import { TasksCollection } from "/imports/api/TaskCollection";
-import "../imports/api/methods";
 
 const insertTask = (taskText: string) =>
   TasksCollection.insert({ text: taskText, isDone: false });
